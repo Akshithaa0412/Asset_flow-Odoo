@@ -17,3 +17,13 @@ def create_allocation(allocation: AllocationCreate, db: Session = Depends(get_db
 @router.get("/", response_model=list[AllocationResponse])
 def get_allocations(db: Session = Depends(get_db)):
     return AllocationService.get_allocations(db)
+
+
+@router.put("/{allocation_id}/return", response_model=AllocationResponse)
+def return_asset(
+    allocation_id: int, notes: str | None = None, db: Session = Depends(get_db)
+):
+
+    allocation = AllocationService.return_asset(db, allocation_id, notes)
+
+    return allocation

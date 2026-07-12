@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from sqlalchemy.orm import Session
 
 from app.models.allocation import Allocation, AllocationStatus
@@ -26,3 +28,24 @@ class AllocationService:
     def get_allocations(db: Session):
 
         return db.query(Allocation).all()
+
+    @staticmethod
+    def return_asset(db: Session, allocation_id: int, notes: str | None = None):
+
+        allocation = (
+            db.query(Allocation)
+            .filter(Allocation.allocation_id == allocation_id)
+            .first()
+        )
+
+        if not allocation:
+            return None
+
+        allocation.status = AllocationStatus.RETURNED
+        allocation.returned_at = datetime.utcnow()
+        allocation.checkin_notes = notes
+
+        db.commit()
+        db.refresh(allocation)
+
+        return allocation
