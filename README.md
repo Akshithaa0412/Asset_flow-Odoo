@@ -1,4 +1,3 @@
-# Asset_flow-Odoo
 # AssetFlow
 
 ### Intelligent Enterprise Asset & Resource Management
