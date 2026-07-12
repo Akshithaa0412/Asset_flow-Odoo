@@ -1,20 +1,28 @@
 from fastapi import FastAPI
 
-from app.database import engine, Base
-from app.api import allocations
-
-from app.models.allocation import Allocation
-
-
+from app.db.database import Base, engine
+from app.api.routes.assets import router as asset_router
+# Import models so SQLAlchemy knows about them
+from app.models import (
+    Department,
+    Category,
+    Vendor,
+    Employee,
+    Asset,
+    Booking,
+    Maintenance
+)
 Base.metadata.create_all(bind=engine)
 
-
-app = FastAPI(title="AssetFlow API", version="1.0.0")
-
-
-app.include_router(allocations.router)
-
+app = FastAPI(
+    title="AssetFlow API",
+    version="1.0.0"
+)
+app.include_router(asset_router)
 
 @app.get("/")
 def root():
-    return {"success": True, "message": "AssetFlow API is running", "data": {}}
+    return {
+        "status": "running",
+        "message": "AssetFlow Backend Ready 🚀"
+    }
