@@ -23,3 +23,31 @@ class AssetRepository:
         db.refresh(new_asset)
 
         return new_asset
+    
+    @staticmethod
+    def update(db: Session, asset_id, asset_data):
+        asset = db.query(Asset).filter(Asset.id == asset_id).first()
+
+        if not asset:
+            return None
+
+        for key, value in asset_data.model_dump(exclude_unset=True).items():
+            setattr(asset, key, value)
+
+        db.commit()
+        db.refresh(asset)
+
+        return asset
+
+
+    @staticmethod
+    def delete(db: Session, asset_id):
+        asset = db.query(Asset).filter(Asset.id == asset_id).first()
+
+        if not asset:
+            return None
+
+        db.delete(asset)
+        db.commit()
+
+        return asset

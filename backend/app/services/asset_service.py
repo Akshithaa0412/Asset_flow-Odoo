@@ -17,3 +17,11 @@ class AssetService:
     @staticmethod
     def create_asset(db: Session, asset: AssetCreate):
         return AssetRepository.create(db, asset)
+    
+    @staticmethod
+    def update_asset(db, asset_id, asset):
+        return AssetRepository.update(db, asset_id, asset)
+
+    @staticmethod
+    def delete_asset(db, asset_id):
+        return AssetRepository.delete(db, asset_id)
