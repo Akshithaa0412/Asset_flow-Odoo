@@ -1,14 +1,9 @@
 import enum
 from datetime import datetime
 
-from sqlalchemy import Column, DateTime, Enum, ForeignKey, Integer, String
+from sqlalchemy import Column, DateTime, Enum, Integer, String
 
-# Temporary import until Member 1's shared Base is available.
-# Later we will replace this with:
-# from app.database.base import Base
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
+from app.database import Base
 
 
 class AllocationStatus(str, enum.Enum):
@@ -20,25 +15,26 @@ class AllocationStatus(str, enum.Enum):
 class Allocation(Base):
     __tablename__ = "allocations"
 
-    allocation_id = Column(Integer, primary_key=True, index=True)
+    allocation_id = Column(
+        Integer,
+        primary_key=True,
+        index=True,
+    )
 
     asset_id = Column(
         Integer,
-        ForeignKey("assets.asset_id"),
         nullable=False,
         index=True,
     )
 
     employee_id = Column(
         Integer,
-        ForeignKey("employees.employee_id"),
         nullable=False,
         index=True,
     )
 
     allocated_by = Column(
         Integer,
-        ForeignKey("users.user_id"),
         nullable=False,
     )
 
