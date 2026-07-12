@@ -1,13 +1,134 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+    <title>AssetFlow | Smart Asset Management System</title>
+
+    <meta 
+        name="description" 
+        content="AssetFlow is a smart asset management platform for tracking, allocating, and maintaining organizational assets."
+    />
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 50px;
+            border-radius: 16px;
+            max-width: 700px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #2563eb;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            background: #eff6ff;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        a:hover {
+            background: #1d4ed8;
+        }
+
+        @media(max-width:600px){
+            h1 {
+                font-size: 36px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>AssetFlow</h1>
+
+        <p>
+            A smart asset management system built for organizations to
+            efficiently track, allocate, maintain, and analyze their assets.
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+                📦 Asset Tracking
+            </div>
+
+            <div class="feature">
+                👥 Employee Allocation
+            </div>
+
+            <div class="feature">
+                🔧 Maintenance Management
+            </div>
+
+            <div class="feature">
+                📊 Analytics Dashboard
+            </div>
+
+        </div>
+
+        <a href="https://github.com/Akshithaa0412/Asset_flow-Odoo">
+            View GitHub Repository
+        </a>
+
+    </div>
+
+</div>
+
+</body>
 </html>
